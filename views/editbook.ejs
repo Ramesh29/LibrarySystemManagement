@@ -1,0 +1,38 @@
+<%- include('layout/header') %>
+<div class="container-sm">
+    <h3 class="fs-4 bg-light py-2 ps-2 mb-4 border-bottom border-5 border-success">Edit a book</h3>
+    <% if (book != '')  { %>
+    <form method="POST" action="/api/books/editbook/<%= book._id %>" id="edit-form" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="bookid" class="form-label">ID</label>
+        <input type="text" class="form-control" id="bookid" name="bookid" disabled value="<%= book._id %>" required>
+    </div>        
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="title" value="<%= book.title %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="author" value="<%= book.author %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="isbn" value="<%= book.isbn %>" required>
+    </div>
+    <div class="mb-3">
+        <img src="/<%=book.img %>" width="300" class="img-thumbnail" alt=""/>
+    </div>    
+    <div class="mb-3">
+        <label for="imagefile" class="form-label">Image</label>
+        <input class="form-control" type="file" id="imagefile" name="imagefile">
+    </div>
+    <div class="mb-3">
+        <input type="hidden" name="old_image" value="<%=book.img %>"/>
+    </div>      
+    <button type="submit" class="btn btn-primary mb-3">Edit a book</button>
+    </form>
+    <% } else { %> }
+        <h1 class="text-center text-seconday mt-5">No book found in the database. </h1>
+    <% } %>
+</div>
+<%- include('layout/footer') %>

@@ -1,0 +1,46 @@
+<%- include('layout/header') %>
+
+<div class="container-sm mt-2 pt-2">
+
+    <a href="/api/patrons/showAddPatronView" class="btn btn-primary mt-5 mb-2"><i class="bi bi-plus-square-fill"></i> Add a new patron</a>
+
+
+    <% if (  patrons != '') { %>
+      <table  class="table table-striped text-center mt-5">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Address</th>
+            <th scope="col">Cardnumber</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% patrons.forEach((row, index) => {  %>
+            <tr>
+              <td scope="row"><%= index %></td>
+              <td><%= row.firstname %></td>
+              <td><%= row.lastname %></td>
+              <td><%= row.address %></td>
+              <td><%= row.cardnumber %></td>
+              <td><%= row.email %></td>
+              <td><%= row.phone %></td>
+              <td>
+                  <a href="/api/patrons/showEditPatronView/<%= row._id %>" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+              </td>           
+            </tr>            
+           <% }) %>
+        </tbody>
+      </table>    
+    <% }  else { %>
+        <h1 class="text-center text-seconday mt-5">No Patron found in the database! </h1>
+
+      <%  } %>
+</div>
+
+
+<%- include('layout/footer') %>

@@ -1,0 +1,110 @@
+<%- include('layout/header') %>
+<div class="container-sm">
+
+    <h3 class="fs-4 bg-light py-2 ps-2 mb-4 border-bottom border-5 border-success">Add a new transactions </h3>
+
+    <form method="POST" action="/api/trans/addTrans">
+      <div class="form-group">
+        <label for="patronid">Patron ID </label>
+        <input type="text" class="form-control" id="patronid" name="patronid" required>
+      </div> 
+      <div class="form-group">
+        <label for="patronname">Patron Name </label>
+        <input type="text" class="form-control" id="patronname" name="patronname" required>
+      </div>            
+        <div class="form-group">
+          <label for="bookid">BookID </label>
+          <input type="text" class="form-control" id="bookid" name="bookid" required>
+        </div>
+        <div class="form-group">
+          <label for="bookname">Name </label>
+          <input type="text" class="form-control" id="bookname" name="bookname" required>
+        </div>                            
+        <button type="submit" class="btn btn-primary mt-3">Add new transaction</button>
+      </form> 
+
+
+      <h3 class="fs-4 bg-light py-2 ps-2 mb-4 border-bottom border-5 border-success">Select a patron </h3>
+
+      <% if (  patrons != '') { %>
+        <table  class="table table-striped text-center mt-2" id="patron_table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">PatronID</th>
+              <th scope="col">Firstname</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Address</th>
+              <th scope="col">Cardnumber</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% patrons.forEach((row, index) => {  %>
+              <tr>
+                <td scope="row"><%= index %></td>
+                <td><%= row._id %></td>
+                <td><%= row.firstname %></td>
+                <td><%= row.lastname %></td>
+                <td><%= row.address %></td>
+                <td><%= row.cardnumber %></td>
+                <td><%= row.email %></td>
+                <td><%= row.phone %></td>
+                <td>
+                    <a href="#" class="btn btn-primary patron" ><i class="bi bi-pencil-square"></i> Select</a>
+                </td>           
+              </tr>            
+             <% }) %>
+          </tbody>
+        </table>    
+      <% }  else { %>
+          <h1 class="text-center text-seconday mt-5">No Patron found in the database! </h1>
+  
+        <%  } %>
+        
+        
+
+
+      <h3 class="fs-4 bg-light py-2 ps-2 mb-4 border-bottom border-5 border-success">Select a book </h3>
+      <% if ( books != '') { %>
+        <table  class="table table-striped text-center mt-2" id="book_table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">BookID</th>
+              <th scope="col">Image</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">ISBN</th>
+              <th scope="col">Select</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% books.forEach((row, index) => {  %>
+              <tr>
+                <td scope="row"><%= index %></td>
+                <td scope="row"><%= row._id %></td>
+                <td><img src="/<%=row.img %>" width="50" class="img-thumbnail" alt=""/></td>
+                <td><%= row.title %></td>
+                <td><%= row.author %></td>
+                <td><%= row.isbn %></td>
+                <td>
+                    <a href="#" class="btn btn-primary book" ><i class="bi bi-pencil-square"></i> Select</a>
+                </td>           
+              </tr>            
+             <% }) %>
+          </tbody>
+        </table>    
+      <% }  else { %>
+          <h1 class="text-center text-seconday mt-5">No book found in the database </h1>
+  
+        <%  } %>
+
+
+
+
+</div>
+<%- include('layout/footer') %>

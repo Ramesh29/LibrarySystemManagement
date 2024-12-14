@@ -1,0 +1,35 @@
+<%- include('layout/header') %>
+<div class="container-sm">
+    <h3 class="fs-4 bg-light py-2 ps-2 mb-4 border-bottom border-5 border-success">Add a patron </h3>
+    <form method="POST" action="/api/patrons/addPatron" id="add-form">
+        <div class="mb-3">
+            <label for="title" class="form-label">Firstname</label>
+            <input type="text" class="form-control"  id="firstname" name="firstname" placeholder="firstname" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="author" name="lastname" placeholder="lastname" required>
+        </div>
+        <div class="mb-3">
+            <label for="isbn" class="form-label">Address</label>
+            <input type="text" class="form-control" id="isbn" name="address" placeholder="address" required>
+        </div>
+        <div>
+            <label for="isbn" class="form-label">Cardnumber</label>
+            <input type="text" class="form-control" id="isbn" name="cardnumber" placeholder="cardnumber" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="isbn" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="email" required>
+        </div>    
+
+        <div class="mb-3">
+            <label for="isbn" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="phone" required>
+        </div>    
+        
+        <button type="submit" class="btn btn-primary mb-3">Add new Patron</button>
+    </form>
+</div>
+<%- include('layout/footer') %>
